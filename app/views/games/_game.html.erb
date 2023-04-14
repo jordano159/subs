@@ -1,11 +1,29 @@
-<div id="<%= dom_id game %>">
-  <p>
-    <strong>Name:</strong>
-    <%= game.name %>
-  </p>
-  <% if session[:user_type] %>
-    <%= @game.subs.pluck(:creator_word) %>
-  <% else %>
-    <%= @game.subs.pluck(:joiner_word) %>
-  <% end %>
+<div id="<%= dom_id game %>" class=" my-4">
+  <h1><%= game.name %></h1>
+
+      <% if session[:user_type] %>
+        <% @game.subs.each_with_index do |sub, index| %>
+          <div class="card">
+            <div class="card-body">
+                <h2 class="text-center"><%= index + 1 %>. <%= sub.creator_word %></h2> 
+                <div class="row text-center">
+                  <div class="col">ניחושים שלי</div>
+                  <div class="col">ניחושים שלהם</div>
+                </div>
+                <div class="row text-center">
+                <div class="col">
+                  <textarea name="" id="" class="w-100" rows="5"></textarea>
+                </div>
+                <div class="col">
+                  <textarea name="" id="" class="w-100" rows="5"></textarea>
+                </div>
+                </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <% @game.subs.each do |sub| %>
+          <li class="list-group-item"><%= sub.joiner_word %></li>
+        <% end %>
+      <% end %>
 </div>
