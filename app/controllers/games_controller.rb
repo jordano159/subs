@@ -26,7 +26,14 @@ class GamesController < ApplicationController
     respond_to do |format|
       if @game.save
         session[:user_type] = "creator"
-        @game.subs << Sub.all.sample
+        case params[:game][:mode]
+        when "quick"
+          @game.subs << Sub.all.sample
+        when "regular"
+          @game.subs << Sub.all.sample(4)
+        else
+          @game.subs << Sub.all.sample(6)
+        end
         format.html { redirect_to game_url(@game), notice: "Game was successfully created." }
         format.json { render :show, status: :created, location: @game }
       else
