@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @game %>
-
+user type: <%= session[:user_type] %>
 <div>
   <%= link_to "Edit this game", edit_game_path(@game) %> |
   <%= link_to "Back to games", games_path %>
