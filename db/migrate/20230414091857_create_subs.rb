@@ -4,7 +4,7 @@ class CreateSubs < ActiveRecord::Migration[7.0]
       t.string :creator_word
       t.string :joiner_word
       t.integer :difficulty
-      t.references :game, null: false, foreign_key: true
+      t.references :game, null: true, foreign_key: true
 
       t.timestamps
     end
