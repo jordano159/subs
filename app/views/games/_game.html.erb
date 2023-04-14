@@ -3,7 +3,10 @@
     <strong>Name:</strong>
     <%= game.name %>
   </p>
-  <%= @game.subs.first.creator_word %>
-  <%= @game.subs.first.joiner_word %>
+  <% if session[:user_type] %>
+    <%= @game.subs.first.creator_word %>
+  <% else %>
+    <%= @game.subs.first.joiner_word %>
+  <% end %>
 
 </div>
