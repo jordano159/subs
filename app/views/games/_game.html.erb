@@ -1,11 +1,11 @@
 <div id="<%= dom_id game %>" class=" my-4">
   <h1><%= game.name %></h1>
-
+  <button class="btn btn-primary mb-2" id="share_button_<%= game.id %>" >שיתוף משחק</button>
   <% @game.subs.each_with_index do |sub, index| %>
     <div class="card">
       <div class="card-body">
           <h2 class="text-center"><%= index + 1 %>. 
-            <% if session[:user_type] %>
+            <% if session[:game_creator] == @game.id %>
               <%= sub.creator_word %>
             <% else %>
               <%= sub.joiner_word %>
@@ -26,9 +26,6 @@
       </div>
     </div>
   <% end %>
-     
-<button id="share_button_<%= game.id %>" >Copy text</button>
-
 </div>
 
 
@@ -51,7 +48,7 @@ document.querySelector('#share_button_<%= game.id %>').addEventListener('click',
   navigator.clipboard.writeText(copyText);
 
   // Alert the copied text
-  alert("Copied the text: " + copyText);
+  alert("הקישור הועתק");
   }
 });
 </script>

@@ -20,9 +20,18 @@
   <div class="form-group">
     <label class="form-label" for="game_mode">גרסת משחק</label>
     <select class="form-control" id="game_mode" name="game[mode]">
-      <option value="reguler">משחק רגיל, 4 מילים</option>
-      <option value="quick">משחק זריז עם מילה אחת</option>
-      <option value="long">משחק ארוך, 6 מילים</option>
+      <option value="1">משחק זריז עם מילה אחת</option>
+      <option value="4" selected>משחק רגיל, 4 מילים</option>
+      <option value="6">משחק ארוך, 6 מילים</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label" for="game_difficulty">רמת קושי</label>
+    <select class="form-control" id="game_difficulty" name="game[difficulty]">
+      <option value="easy">קל</option>
+      <option value="medium" selected>בינוני</option>
+      <option value="hard">קשה</option>
     </select>
   </div>
 

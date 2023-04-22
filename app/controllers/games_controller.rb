@@ -25,15 +25,8 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
-        session[:user_type] = "creator"
-        case params[:game][:mode]
-        when "quick"
-          @game.subs << Sub.all.sample
-        when "regular"
-          @game.subs << Sub.all.sample(4)
-        else
-          @game.subs << Sub.all.sample(6)
-        end
+        session[:game_creator] = @game.id
+        @game.subs << Sub.send(@game.difficulty).sample(@game.mode.to_i)
         format.html { redirect_to game_url(@game), notice: "Game was successfully created." }
         format.json { render :show, status: :created, location: @game }
       else
@@ -74,6 +67,6 @@ class GamesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def game_params
-      params.require(:game).permit(:name)
+      params.require(:game).permit(:name, :mode, :difficulty)
     end
 end
