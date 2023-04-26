@@ -1,6 +1,7 @@
 <div id="<%= dom_id game %>" class=" my-2">
-  <h1><%= game.name %></h1>
-  <button class="btn btn-primary mb-2" id="share_button_<%= game.id %>" >שיתוף משחק</button>
+  <h1><%= game.name %>
+  <button class="btn btn-primary mb-2 float-start" id="share_button_<%= game.id %>" >שיתוף משחק</button>
+  </h1>
   <% @game.subs.each_with_index do |sub, index| %>
     <div class="py-2">
 
@@ -11,6 +12,9 @@
               $refs.word.classList.toggle('strikethrough')
               $refs.btn.classList.toggle('btn-outline-success')
               $refs.btn.classList.toggle('btn-success')
+              party.confetti($refs.btn, {
+                  count: party.variation.range(70,130),
+                });
             }
            }
            ">
