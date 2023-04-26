@@ -1,14 +1,36 @@
-<div id="<%= dom_id game %>" class=" my-4">
+<div id="<%= dom_id game %>" class=" my-2">
   <h1><%= game.name %></h1>
   <button class="btn btn-primary mb-2" id="share_button_<%= game.id %>" >שיתוף משחק</button>
   <% @game.subs.each_with_index do |sub, index| %>
-    <div class="card">
-      <div class="card-body">
-          <h2 class="text-center"><%= index + 1 %>. 
+    <div class="py-2">
+
+      <div class="card-body my-3"
+           x-data="
+           {
+            toggle(){
+              $refs.word.classList.toggle('strikethrough')
+              $refs.btn.classList.toggle('btn-outline-success')
+              $refs.btn.classList.toggle('btn-success')
+            }
+           }
+           ">
+          <h2 class="text-center">
+          <button 
+            type="button" 
+            class="btn btn-outline-success float-start border-0"
+            x-ref="btn"
+            x-on:click="toggle()"> 
+              <i class="bi-check-lg"></i>
+            </button>
+          <%= index + 1 %>. 
             <% if session[:game_creator] == @game.id %>
-              <%= sub.creator_word %>
+              <span x-ref="word">
+                <%= sub.creator_word %>
+              </span>
             <% else %>
-              <%= sub.joiner_word %>
+              <span x-ref="word">
+                <%= sub.joiner_word %>
+              </span>
             <% end %>
           </h2> 
           <div class="row text-center">
@@ -16,12 +38,12 @@
             <div class="col">ניחושים שלהם</div>
           </div>
           <div class="row text-center">
-          <div class="col">
-            <textarea name="" id="" class="w-100" rows="5"></textarea>
-          </div>
-          <div class="col">
-            <textarea name="" id="" class="w-100" rows="5"></textarea>
-          </div>
+            <div class="col">
+              <textarea name="" id="" class="w-100" rows="5"></textarea>
+            </div>
+            <div class="col">
+              <textarea name="" id="" class="w-100" rows="5"></textarea>
+            </div>
           </div>
       </div>
     </div>
@@ -52,3 +74,4 @@ document.querySelector('#share_button_<%= game.id %>').addEventListener('click',
   }
 });
 </script>
+
