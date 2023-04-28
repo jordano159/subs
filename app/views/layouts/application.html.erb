@@ -10,13 +10,13 @@
     <%= javascript_importmap_tags %>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
-    <meta property="og:title" content="!צוללציות" />
+    <meta property="og:title" content="צוללציות" />
     <meta property="og:image" content="<%= image_url "submarine.png" %>" />
+          <meta property="og:url" content="https://subs.guypashi.com/" />
+          <meta property="og:description" content="בואו לשחק איתי צוללציות! />
       <% if content_for?(:meta_og) %>
         <%= yield :meta_og %>
       <% else %>
-          <meta property="og:url" content="https://subs.guypashi.com/" />
-          <meta property="og:description" content="משחק צוללציות" />
       <% end %>
 
 
