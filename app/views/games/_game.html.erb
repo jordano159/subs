@@ -1,4 +1,10 @@
+<%= content_for(:meta_og) do %>
+  <meta property="og:url" content="https://subs.guypashi.com/games/<%= game.id %>" />
+  <meta property="og:description" content="בואו לשחק איתי צוללציות!" />
+<% end %>
+
 <div id="<%= dom_id game %>" class=" my-2">
+
   <h1><%= game.name %>
   <button class="btn btn-primary mb-2 float-start" id="share_button_<%= game.id %>" >שיתוף משחק</button>
   </h1>
